@@ -1,5 +1,5 @@
 {
-  "name": "scss-bootstrap",
+  "name": "@sinman/scss-bootstrap",
   "version": "1.0.0",
   "description": "A collection of reusable SCSS mixins, functions, and helpers",
   "repository": "https://github.com/sebastian-inman-design/scss-bootstrap",
