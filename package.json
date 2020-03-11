@@ -4,7 +4,6 @@
   "description": "A collection of reusable SCSS mixins, functions, and helpers",
   "repository": "https://github.com/sebastian-inman-design/scss-bootstrap",
   "publishConfig": { "registry": "https://npm.pkg.github.com/" },
-  "main": "index.js",
   "keywords": ["sass", "scss", "css", "bootstrap"],
   "author": {
     "name": "Sebastian Inman",
