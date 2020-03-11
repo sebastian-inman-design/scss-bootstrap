@@ -1,0 +1,177 @@
+// Color
+//
+// Style guide: Functions.Color
+
+
+
+// Color\RGB
+//
+// Converts the provided color into RGB format.
+//
+// $color - The color being converted to RGB format.
+//
+// Style guide: Functions.Color.RGB
+
+@function Color\RGB($color) {
+
+  @return Color\RGBA($color, 1);
+
+}
+
+
+
+// Color\RGBA
+//
+// Converts the provided color into RGBA format.
+//
+// $color - The color being converted to RGBA format.
+// $alpha - The alpha value of the converted color.
+//
+// Style guide: Functions.Color.RGBA
+
+@function Color\RGBA($color, $alpha: 1) {
+
+  @if $alpha > 1 or $alpha < 0 {
+
+    @return Log\Error('The $alpha: `#{$alpha}` must be between 0 and 1');
+
+  }
+
+  @return rgba($color, $alpha);
+
+}
+
+
+
+// Color\HSLA
+//
+// Converts the provided color into HSLA format.
+//
+// $color - The color being converted to HSLA format.
+// $alpha - The alpha value of the converted color.
+//
+// Style guide: Functions.Color.HSLA
+
+@function Color\HSLA($color, $alpha: 1) {
+
+  @if $alpha > 1 or $alpha < 0 {
+
+    @return Log\Error('The $alpha: `#{$alpha}` must be between 0 and 1');
+
+  }
+
+  @return hsla(hue($color), saturation($color), lightness($color), $alpha);
+
+}
+
+
+
+// Color\Tint
+//
+// Applies a white tint to the provided color.
+//
+// $color - The color being tinted.
+// $amount - How much tint to apply to the color (0 - 100).
+//
+// Markup:
+// h1 { color: Color\Tint(red, 50); }
+//
+// Style guide: Functions.Color.Tint
+
+@function Color\Tint($color, $amount) {
+
+  @if $amount > 100 or $amount < 0 {
+
+    @return Log\Error('The tint $amount: `#{$amount}` must be between 0 and 100');
+
+  }
+
+  @return mix(white, $color, $amount);
+
+}
+
+
+
+// Color\Shade
+//
+// Applies a black shade to the provided color.
+//
+// $color - The color being shaded.
+// $amount - How much shade to apply to the color (0 - 100).
+//
+// Markup:
+// h1 { color: Color\Shade(red, 50); }
+//
+// Style guide: Functions.Color.Shade
+
+@function Color\Shade($color, $amount) {
+
+  @if $amount > 100 or $amount < 0 {
+
+    @return Log\Error('The shade $amount: `#{$amount}` must be between 0 and 100');
+
+  }
+
+  @return mix(black, $color, $amount);
+
+}
+
+
+
+// Color\Blend
+//
+// Blends two colors together and returns the mixed value.
+//
+// $color1 - The first color being blended.
+// $color2 - The second color being blended.
+// $amount - How much to blend the two colors (0 - 100).
+//
+// Markup:
+// div { background-color: Color\Blend(red, blue, 50%); }
+//
+// Style guide: Functions.Color.Blend
+
+@function Color\Blend($color1, $color2, $amount: 50%) {
+
+  @if $amount > 100 or $amount < 0 {
+
+    @return Log\Error('The blend $amount: `#{$amount}` must be between 0 and 100');
+
+  }
+
+  @return mix($color1, $color2, $amount);
+
+}
+
+
+
+// Color\Offset
+//
+// Blends two colors together and returns the mixed value.
+//
+// $background - The background color.
+// $color1 - The first color being blended.
+// $color2 - The second color being blended.
+// $offset - How much to blend the two colors (0 - 100).
+//
+// Style guide: Functions.Color.Offset
+
+@function Color\Offset($background, $color1: #FFFFFF, $color2: #000000, $offset: 50) {
+
+  @if $offset > 100 or $offset < 0 {
+
+    @return Log\Error('The blend $offset: `#{$offset}` must be between 0 and 100');
+
+  }
+
+  @if(lightness($background) <= $offset) {
+
+    @return $color1;
+
+  } @else {
+
+    @return $color2;
+
+  }
+
+}

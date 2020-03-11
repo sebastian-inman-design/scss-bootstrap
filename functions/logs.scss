@@ -1,0 +1,79 @@
+// Log
+//
+// Style guide: Functions.Log
+
+
+
+// Log\Error
+//
+// Prints the error message to the terminal.
+//
+// $message - The error message being printed to the terminal.
+//
+// Style guide: Functions.Log.Error
+
+@function Log\Error($message) {
+
+  @if $Settings\Log\Errors {
+
+    @error $message;
+
+  }
+
+}
+
+
+
+// Log\Warn
+//
+// Prints the warning message to the terminal.
+//
+// $message - The warning message being printed to the terminal.
+//
+// Style guide: Functions.Log.Warn
+
+@function Log\Warn($message) {
+
+  @if $Settings\Log\Warnings {
+
+    @warn $message;
+
+  }
+
+}
+
+
+
+// Log\Debug
+//
+// Prints the message to the terminal.
+//
+// $message - The message being printed to the terminal.
+//
+// Style guide: Functions.Log.Debug
+
+@function Log\Debug($message) {
+
+  @if $Settings\Log\Debug {
+
+    @debug $message;
+
+  }
+
+}
+
+
+
+// Log\Print
+//
+// Prints the message to the terminal.
+//
+// $message - The message being printed to the terminal.
+//
+// Style guide: Functions.Log.Print
+
+@function Log\Print($message) {
+
+  @return Log\Debug($message);
+
+}

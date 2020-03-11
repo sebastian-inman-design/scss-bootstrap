@@ -1,0 +1,81 @@
+// Convert
+//
+// Sass mixins that convert properties and values from one form to another.
+//
+// Style guide: Mixins.Convert
+
+
+
+// Convert\Pixel-Rem
+//
+// Converts pixel values into rem values.
+//
+// @include Convert\Pixel-Rem(width, 100px);
+//
+// $property  - The property being converted to rems.
+// $values... - The pixel values being converted to rems.
+//
+// Style guide: Mixins.Convert.Pixel-Rem
+
+@mixin Convert\Pixel-Rem($property, $values...) {
+
+  $pxValues: '';
+  $remValues: '';
+
+  @for $i from 1 through length($values) {
+
+    $value: Helper\StripUnit(nth($values, $i));
+    $base: Helper\StripUnit($Base\Font\Size);
+
+    $pxValues: #{$pxValues + $value}px;
+    $remValues: #{$remValues + $value / $base}rem;
+
+    @if $i < length($values) {
+
+      $pxValues: #{$pxValues + ' '};
+      $remValues: #{$remValues + ' '};
+
+    }
+
+  }
+
+  #{$property}: $pxValues;
+  #{$property}: $remValues;
+
+}
+
+
+
+// Convert\Rem-Pixel
+//
+// Converts rem values into pixel values.
+//
+// @include Convert\Rem-Pixel(width, 10rem);
+//
+// $property  - The property being converted to pixels.
+// $values... - The rem values being converted to pixels.
+//
+// Style guide: Mixins.Convert.Rem-Pixel
+
+@mixin Convert\Rem-Pixel($property, $values...) {
+
+  $pxValues: '';
+
+  @for $i from 1 through length($values) {
+
+    $value: Helper\StripUnit(nth($values, $i));
+    $base: Helper\StripUnit($Base\Font\Size);
+
+    $pxValues: #{$pxValues + $value * $base}px;
+
+    @if $i < length($values) {
+
+      $pxValues: #{$pxValues + ' '};
+
+    }
+
+  }
+
+  #{$property}: $pxValues;
+
+}

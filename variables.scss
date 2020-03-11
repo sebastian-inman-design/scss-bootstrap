@@ -1,0 +1,49 @@
+// Setting Variables
+// ===================================
+$Settings\Log\Debug: true;
+$Settings\Log\Errors:   true;
+$Settings\Log\Warnings: true;
+$Settings\Text\Render: optimizeSpeed;
+$Settings\Text\Scale: 100%;
+
+
+
+// Color Variables
+// ===================================
+$Color\Default\White: #FFFFFF !default;
+$Color\Default\Black: #000000 !default;
+
+
+
+// Font Variables
+// ===================================
+$Font\Family\Arial: 'Arial', sans-serif;
+
+
+
+// Viewport Variables
+// ===================================
+$Viewport\XS: 0px !default;
+$Viewport\SM: 776px !default;
+$Viewport\MD: 1280px !default;
+$Viewport\LG: 1600px !default;
+
+
+
+// Grid Variables
+// ===================================
+$Grid\MaxColumns: 12;
+
+
+
+// Transition Variables
+// ===================================
+$Transition\Speed: 220ms;
+$Transition\Bezier: cubic-bezier(0.32, -0.07, 0.21, 1);
+
+
+
+// Base Variables
+// ===================================
+$Base\Font\Size:   16px;
+$Base\Font\Family: $Font\Family\Arial;

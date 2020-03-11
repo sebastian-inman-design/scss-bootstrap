@@ -1,0 +1,31 @@
+@mixin Event\Hover() {
+  &:hover {
+    @content;
+  }
+}
+
+@mixin Event\Focus() {
+  &:focus {
+    @content;
+  }
+}
+
+@mixin Event\Focus-Within() {
+  &:focus-within {
+    @content;
+  }
+}
+
+@mixin Event\HoverFocus() {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+@mixin Event\HoverFocusWithin() {
+  &:hover,
+  &:focus-within {
+    @content
+  }
+}

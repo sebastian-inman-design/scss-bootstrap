@@ -1,0 +1,57 @@
+////
+/// @group  Transition
+/// @author Sebastian Inman
+////
+
+
+
+@mixin Transition($properties, $settings: (speed: $Transition\Speed, bezier: $Transition\Bezier, delay: false)) {
+
+  // Use the default speed as a fallback.
+  @if(not map-has-key($settings, speed)) {
+
+    $settings: map-merge($settings, (speed: $Transition\Speed));
+
+  }
+
+  // Use the default bezier as a fallback.
+  @if(not map-has-key($settings, bezier)) {
+
+    $settings: map-merge($settings, (bezier: $Transition\Bezier));
+
+  }
+
+  // Use no delay as a fallback.
+  @if(not map-has-key($settings, delay)) {
+
+    $settings: map-merge($settings, (delay: false));
+
+  }
+
+  $transition: '';
+
+  @if type-of($properties) == 'string' {
+
+    $transition: #{$properties};
+    $transition: #{$transition} #{map-get($settings, speed)} #{map-get($settings, bezier)};
+
+  } @else if(type-of($properties) == 'list') {
+
+    @each $property in $properties {
+
+      $transition: #{$transition}, #{$property};
+      $transition: #{$transition} #{map-get($settings, speed)} #{map-get($settings, bezier)};
+
+    }
+
+  }
+
+  @if map-has-key($settings, delay) and map-get($settings, delay) != false {
+
+    $transition: #{$transition} #{map-get($settings, delay)};
+
+  }
+
+  transition: $transition;
+
+}

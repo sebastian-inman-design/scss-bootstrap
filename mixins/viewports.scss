@@ -1,0 +1,96 @@
+// Viewport
+//
+// Style guide: Mixins.Viewport
+
+
+
+// Viewport\Min
+//
+// Wraps the content in a min-width media query.
+//
+// Markup:
+// @include Viewport\Min(800px) { @content; }
+//
+// $breakpoint - The minimum viewport size in pixels.
+//
+// Style guide: Mixins.Viewport.Min
+
+@mixin Viewport\Min($breakpoint) {
+
+  @media only screen and (min-width: $breakpoint) {
+
+    @content;
+
+  }
+
+}
+
+
+
+// Viewport\Max
+//
+// Wraps the content in a max-width media query.
+//
+// Markup:
+// @include Viewport\Max(1024px) { @content; }
+//
+// $breakpoint - The maximum viewport size in pixels.
+//
+// Style guide: Mixins.Viewport.Max
+
+@mixin Viewport\Max($breakpoint) {
+
+  @media only screen and (min-width: $breakpoint) {
+
+    @content;
+
+  }
+
+}
+
+
+
+// Viewport\Between
+//
+// Wraps the content in a min-width / max-width media query.
+//
+// Markup:
+// @include Viewport\Between(400px, 1024px) { @content; }
+//
+// $min - The minimum width of the viewport.
+// $max - The maximum width of the viewport.
+//
+// Style guide: Mixins.Viewport.Between
+
+@mixin Viewport\Between($min, $max) {
+
+  @media only screen and (min-width: $min) and (max-width: $max) {
+
+    @content;
+
+  }
+
+}
+
+
+
+// Viewport\Orientation
+//
+// Wraps the content in a min-width media query.
+//
+// Markup:
+// @include Viewport\Orientation(portrait) { @content; }
+//
+// $orientation - The orientation of the device [portrait/landscape].
+//
+// Style guide: Mixins.Viewport.Orientation
+
+@mixin Viewport\Orientation($orientation: landscape) {
+
+  @media only screen and (orientation: $orientation) {
+
+    @content;
+
+  }
+
+}

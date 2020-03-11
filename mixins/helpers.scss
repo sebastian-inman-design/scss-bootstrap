@@ -1,0 +1,40 @@
+// Helpers
+//
+// Commonly used Scss helper mixins.
+//
+// Style guide: Mixins.Helpers
+
+
+@mixin Helper\Line-Clamp($lines: 2, $overflow: ellipsis) {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  display: -webkit-box;
+  text-overflow: $overflow;
+  overflow: hidden;
+  @if $lines == 1 {
+    white-space: nowrap;
+  }
+}
+
+@mixin Helper\Hidden-Text() {
+  text-indent: -9999px;
+  overflow: hidden;
+  line-height: 0;
+  font-size: 0;
+}
+
+@mixin Helper\Visible-Text() {
+  text-indent: 0;
+  overflow: unset;
+  line-height: inherit;
+  font-size: inherit;
+}
+
+@mixin Helper\FontAwesome($icon) {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font: normal normal normal 14px/1 FontAwesome;
+  display: inline-block;
+  text-rendering: auto;
+  content: $icon;
+}
